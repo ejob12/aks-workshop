@@ -21,6 +21,15 @@ This exercise will cover deployment of a basic AKS cluster. This will be use as 
     LOCATION=eastus2
     ```
 
+## Create resource group
+
+1. Create Resource Group.
+
+    ```bash
+    az group create --location $LOCATION \
+                    --resource-group $RG
+    ```
+
 ## Create Azure Container Registry (ACR)
 
 ACR will be used in subsequent labs
@@ -30,14 +39,7 @@ ACR_NAME=acr$INITIALS$RANDOM
 az acr create -n $ACR_NAME -g $RG --sku Standard
 ```
 
-## Create resource group and a basic cluster using Azure CLI
-
-1. Create Resource Group.
-
-    ```bash
-    az group create --location $LOCATION \
-                    --resource-group $RG
-    ```
+## Create basic AKS cluster using Azure CLI
 
 1. Define variables for AKS cluster.
 
