@@ -56,7 +56,7 @@ If not already deployed, then proceed to deploy the aks-helloworld application.
 
 1. Scale replica count to 2:
 
-    ``bash
+    ```bash
     kubectl scale deployment aks-helloworld --replicas=2 -n helloworld
     ```
 
