@@ -88,6 +88,7 @@ Get the node pool image version
 
 ```bash
 az aks nodepool show -g $RG --cluster-name $CLUSTER_NAME --nodepool-name $NODEPOOL_NAME -o tsv --query nodeImageVersion
+
 AKSUbuntu-2204gen2containerd-202410.27.0
 ```
 
@@ -95,6 +96,7 @@ Get the latest node pool node image version
 
 ```bash
 az aks nodepool get-upgrades -g $RG --cluster-name $CLUSTER_NAME --nodepool-name $NODEPOOL_NAME -o tsv --query latestNodeImageVersion
+
 AKSUbuntu-2204gen2containerd-202411.12.0
 ```
 
