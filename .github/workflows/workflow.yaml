@@ -1,39 +1,32 @@
-name: Demo-API-CI
+name: Demo-API-CI-2
 
 on:
   push:
     branches:
-    - main
+      - main
 
 env:
   APP_NAME: demo-api
   NAMESPACE: ghdemo
-<<<<<<< HEAD
-  LOGIN_SERVER: acrabc27340.azurecr.io
-  CLUSTER_NAME: aks-abc
-  CLUSTER_RESOURCE_GROUP: aks-abc-rg     
-=======
-  LOGIN_SERVER: <acrServerName>
-  CLUSTER_NAME: <clusterName>
-  CLUSTER_RESOURCE_GROUP: <clusterResourceGroup>     
->>>>>>> 390b5d157ad592fc0b28680945ea0c02aca72160
+  LOGIN_SERVER: acrabc27340.azurecr.io       # Replace with your actual ACR login server
+  CLUSTER_NAME: aks-abc                      # Replace with your actual AKS cluster name
+  CLUSTER_RESOURCE_GROUP: aks-abc-rg         # Replace with your actual resource group
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:   
     - name: Check Out Repo 
       uses: actions/checkout@v2
 
-    # Connect to Azure Container Registry (ACR)
-    - name: ACR login
+    - name: ACR Login
       uses: azure/docker-login@v1
       with:
         login-server: ${{ env.LOGIN_SERVER }}
         username: ${{ secrets.ACR_CLIENT_ID }}
         password: ${{ secrets.ACR_CLIENT_PASSWORD }}
 
-    # Container build and push to a Azure Container Registry (ACR)
     - name: Build, tag, and push image to ACR
       uses: docker/build-push-action@v2
       with:
@@ -41,4 +34,5 @@ jobs:
         file: ./src/Dockerfile
         push: true
         tags: |
-            ${{ env.LOGIN_SERVER }}/${{ env.APP_NAME }}:${{ github.run_number }}
+          ${{ env.LOGIN_SERVER }}/${{ env.APP_NAME }}:${{ github.run_number }}
+
