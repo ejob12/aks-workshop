@@ -1,4 +1,4 @@
-name: Demo-API-CI-2
+name: Demo-API-CI-3
 
 on:
   push:
